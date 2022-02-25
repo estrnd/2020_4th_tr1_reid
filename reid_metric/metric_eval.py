@@ -29,7 +29,6 @@ def calc_f1(total_outs, total_labels, th = 0.7):
         sims_i = sims[idx].clone()
         pred_i = (sims_i > th)*1
         gt   = [1 if e == pivot_label else 0 for e in total_labels]
-        return f1_score(gt, pred_i), precision_score(gt, pred_i), recall_score(gt, pred_i), accuracy_score(gt, pred_i)
         return f1_score(gt, pred_i)
     
     f1s = [calc_f1_(idx,th) for idx in tqdm(range(len(total_outs)))] 
